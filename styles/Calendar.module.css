@@ -1,0 +1,12 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 0.4fr auto;
+  grid-auto-flow: row;
+  border: 1px solid red;
+}
+
+.grid-container span {
+  height: 100px;
+  grid-column-start: 2;
+}

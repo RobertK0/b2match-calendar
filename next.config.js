@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
-}
-
-module.exports = nextConfig
+  async redirects() {
+    return [
+      {
+        source: "/:year",
+        destination: "/:year/1",
+        permanent: true,
+      },
+    ];
+  },
+};
