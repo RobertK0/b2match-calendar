@@ -1,15 +1,16 @@
 import React from "react";
+import styles from "../styles/CalendarHeader.module.css";
 
 const CalendarHeader = () => {
   return (
     <>
-      <strong>Monday</strong>
-      <strong>Tuesday</strong>
-      <strong>Wednesday</strong>
-      <strong>Thursday</strong>
-      <strong>Friday</strong>
-      <strong>Saturday</strong>
-      <strong>Sunday</strong>
+      <strong className={styles.day}>Monday</strong>
+      <strong className={styles.day}>Tuesday</strong>
+      <strong className={styles.day}>Wednesday</strong>
+      <strong className={styles.day}>Thursday</strong>
+      <strong className={styles.day}>Friday</strong>
+      <strong className={styles.day}>Saturday</strong>
+      <strong className={styles.day}>Sunday</strong>
     </>
   );
 };

@@ -1,0 +1,70 @@
+.main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  padding: 32px 64px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main span {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.wrapper {
+  margin-bottom: 12px;
+  white-space: nowrap;
+}
+
+.wrapper span:not(:last-child) {
+  color: #888;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  background-color: rgb(186, 219, 219);
+  color: #555;
+  height: 75px;
+  width: 155px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+}
+
+.back-button span {
+}
+
+.back-button::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(1);
+  height: 75px;
+  width: 155px;
+  content: "";
+  background-color: rgba(161, 196, 196, 0.151);
+  z-index: 0;
+  transition: all 0.5s;
+  border-radius: 10px;
+}
+
+.back-button:hover::before {
+  transform: scale(1.5);
+}

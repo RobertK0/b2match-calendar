@@ -1,0 +1,38 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+.header span {
+  align-self: center;
+  margin-left: 64px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.container button {
+  height: 48px;
+  width: 48px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.container button:hover {
+  background-color: #ccc;
+}
+
+.container h2 {
+  display: inline;
+  width: 200px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(75, 75, 75, 0.658);
+  font-weight: 500;
+}
