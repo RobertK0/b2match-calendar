@@ -19,7 +19,7 @@ const CalendarPage = () => {
   //If query undefined due to running on server, defaults to current month
   const year = router.query.year ? router.query.year : currentYear;
   const month = router.query.month
-    ? router.query.month
+    ? +router.query.month
     : currentMonth;
 
   //If month/year out of range or not an int, return user to default

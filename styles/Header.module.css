@@ -11,8 +11,16 @@
 }
 
 .year {
+  margin-left: 20px;
+  font-family: inherit;
+  background-color: transparent;
   color: var(--text);
   font-size: 20px;
+  border: none;
+  width: 30%;
+}
+.year option {
+  background-color: var(--secondary-bg);
 }
 
 .btn-theme {
