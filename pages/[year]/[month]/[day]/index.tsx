@@ -4,23 +4,31 @@ import React, { useContext } from "react";
 import Ctx from "../../../../store/ctxProvider";
 import Head from "next/head";
 import styles from "../../../../styles/Details.module.css";
+import getDates from "../../../../utils/getDates";
+import validateDate from "../../../../utils/validateDate";
 
 const Details = () => {
   const ctx = useContext(Ctx);
   const router = useRouter();
-  if (
-    !router.query.year ||
-    !router.query.month ||
-    !router.query.day
-  )
-    return <></>;
-  const date = new Date(
-    +router.query.year,
-    +router.query.month - 1,
-    +router.query.day
-  );
+
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+  const currentDate = new Date().getDate();
+
+  const year = router.query.year ? +router.query.year : currentYear;
+  const month = router.query.month
+    ? +router.query.month
+    : currentMonth;
+  const date = router.query.day ? +router.query.day : currentDate;
+
+  let dates = getDates(+year, +month - 1);
+  if (!validateDate(year, month, date, dates))
+    router.replace(`/${currentYear}/${currentMonth}`);
+
+  const dateObj = new Date(year, month - 1, date);
+
   const events = ctx.events.filter(
-    (event) => event.date.toDateString() === date.toDateString()
+    (event) => event.date.toDateString() === dateObj.toDateString()
   );
   const markup = events.map((event, index) => {
     return (
@@ -51,7 +59,9 @@ const Details = () => {
           <div className={styles.card}>
             <span className={styles.title}>{`${
               events.length
-            } total commit${events.length > 1 ? "s" : ""}: `}</span>
+            } total commit${
+              events.length === 1 ? "" : "s"
+            }: `}</span>
             {markup}
           </div>
         </main>

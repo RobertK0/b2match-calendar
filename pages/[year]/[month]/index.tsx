@@ -2,25 +2,35 @@ import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import DayLabels from "../../../components/DayLabels";
 import DateCell from "../../../components/DateCell";
-import styles from "../../../styles/Calendar.module.css";
+import styles from "../../../styles/Home.module.css";
 import getDates from "../../../utils/getDates";
 import Header from "../../../components/Header";
 import Ctx from "../../../store/ctxProvider";
 import Head from "next/head";
+import validateDate from "../../../utils/validateDate";
 
 const CalendarPage = () => {
   const router = useRouter();
   const ctx = useContext(Ctx);
 
-  //If query undefined due to running on server, defaults to 05/2022
-  const year = router.query.year ? router.query.year : "2022";
-  const month = router.query.month ? router.query.month : "05";
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+
+  //If query undefined due to running on server, defaults to current month
+  const year = router.query.year ? router.query.year : currentYear;
+  const month = router.query.month
+    ? router.query.month
+    : currentMonth;
+
+  //If month/year out of range or not an int, return user to default
+  if (!validateDate(+year, +month))
+    router.replace(`/${currentYear}/${currentMonth}`);
 
   //Gets all dates for selected year and month in an array
   let dates = getDates(+year, +month - 1);
 
   const markup = dates.map((date, index) => (
-    <DateCell startingDay={dates[0].getDay()} key={index}>
+    <DateCell dates={dates} key={index}>
       {date.getDate()}
     </DateCell>
   ));

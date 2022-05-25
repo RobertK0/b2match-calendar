@@ -8,8 +8,12 @@ const HomeHeader = () => {
   const router = useRouter();
   const ctx = useContext(Ctx);
 
-  //If query undefined due to running on server, defaults to 2022
-  const year = router.query.year ? router.query.year : "2022";
+  const currentYear = new Date().getFullYear();
+
+  //If query undefined due to running on server, defaults to current month
+  const year = router.query.year
+    ? router.query.year
+    : `${currentYear}`;
 
   const switchThemeHandler = () => {
     ctx.changeTheme();

@@ -6,19 +6,30 @@ import DetailsButton from "./DetailsButton";
 
 type PropType = {
   children: number;
-  startingDay: number;
+  dates: Date[];
 };
 
-const DateCell: React.FC<PropType> = ({
-  children,
-  startingDay,
-}) => {
+const DateCell: React.FC<PropType> = ({ children, dates }) => {
   const ctx = useContext(Ctx);
   const router = useRouter();
 
-  //If query undefined due to running on server, defaults to 05/2022
-  const year = router.query.year ? router.query.year : "2022";
-  const month = router.query.month ? router.query.month : "05";
+  const startingDay = dates[0].getDay();
+
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+
+  //If query undefined due to running on server, defaults to current month
+  const year = router.query.year
+    ? router.query.year
+    : `${currentYear}`;
+  const month = router.query.month
+    ? router.query.month
+    : `${currentMonth}`;
+
+  //If month/year out of range or not an int, return user to default
+  if (!Number.isInteger(+month) || +month < 1 || +month > 12)
+    router.replace(`/${year}/1`);
+
   const date = new Date(+year, +month - 1, children);
 
   const events = ctx.events.filter(

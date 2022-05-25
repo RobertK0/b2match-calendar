@@ -20,9 +20,16 @@ const monthString = [
 const Pagination = () => {
   const router = useRouter();
 
-  //If query undefined due to running on server, defaults to 05/2022
-  const year = router.query.year ? router.query.year : "2022";
-  const month = router.query.month ? router.query.month : "05";
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+
+  //If query undefined due to running on server, defaults to current month
+  const year = router.query.year
+    ? router.query.year
+    : `${currentYear}`;
+  const month = router.query.month
+    ? router.query.month
+    : `${currentMonth}`;
 
   const pageSwitchHandler = (next: boolean) => {
     const target = (() => {
