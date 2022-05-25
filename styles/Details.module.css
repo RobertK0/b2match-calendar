@@ -1,3 +1,9 @@
+.theme-wrapper {
+  position: absolute;
+  inset: 0;
+  background-color: var(--main-bg);
+}
+
 .main {
   position: absolute;
   top: 50%;
@@ -10,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--secondary-bg);
   box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -18,13 +24,27 @@
   display: inline-block;
   margin-bottom: 8px;
 }
+
+.card > span:first-child {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
 .wrapper {
   margin-bottom: 12px;
   white-space: nowrap;
 }
 
+.wrapper span {
+  color: var(--text-accented);
+}
+
 .wrapper span:not(:last-child) {
   color: #888;
+}
+.title {
+  color: var(--text-accented);
 }
 
 .back-button {
@@ -38,7 +58,7 @@
   left: 100px;
   top: 100px;
   background-color: rgb(186, 219, 219);
-  color: #555;
+  color: #333;
   height: 75px;
   width: 155px;
   border: none;
@@ -46,9 +66,6 @@
   cursor: pointer;
   box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.1);
   z-index: 50;
-}
-
-.back-button span {
 }
 
 .back-button::before {
@@ -62,9 +79,9 @@
   background-color: rgba(161, 196, 196, 0.151);
   z-index: 0;
   transition: all 0.5s;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .back-button:hover::before {
-  transform: scale(1.5);
+  transform: scale(1.5, 1.8);
 }

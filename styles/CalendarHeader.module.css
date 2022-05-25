@@ -2,6 +2,7 @@
   text-align: center;
   width: 100%;
   padding: 24px 0;
-  background-color: white;
-  color: #2fa9a9;
+  background-color: var(--secondary-bg);
+  color: var(--accent);
+  transition: all 0.2s;
 }

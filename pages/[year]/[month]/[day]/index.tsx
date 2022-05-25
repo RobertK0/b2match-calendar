@@ -32,19 +32,19 @@ const Details = () => {
   });
 
   return (
-    <>
+    <div className={styles["theme-wrapper"]} data-theme={ctx.theme}>
       <Link href={`/${router.query.year}/${router.query.month}`}>
         <a className={styles["back-button"]}>back</a>
       </Link>
       <main className={styles.main}>
         <div className={styles.card}>
-          <span>{`${events.length} total commit${
-            events.length > 1 ? "s" : ""
-          }: `}</span>
+          <span className={styles.title}>{`${
+            events.length
+          } total commit${events.length > 1 ? "s" : ""}: `}</span>
           {markup}
         </div>
       </main>
-    </>
+    </div>
   );
 };
 

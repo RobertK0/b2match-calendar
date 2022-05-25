@@ -12,17 +12,22 @@ import transformData from "../utils/transformData";
 type context = {
   events: transformedData[];
   setEvents: (data: transformedData[]) => void;
+  theme: "light" | "dark";
+  changeTheme: () => void;
 };
 
 const Ctx = createContext<context>({
   events: [],
   setEvents: () => {},
+  theme: "light",
+  changeTheme: () => {},
 });
 
 export const CtxProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [events, setEvents] = useState<transformedData[]>([]);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     getData("facebook", "create-react-app").then(
@@ -36,9 +41,15 @@ export const CtxProvider: React.FC<{ children: ReactNode }> = ({
     setEvents(data);
   };
 
+  const setThemeHandler = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
   const ctxValue: context = {
     events,
     setEvents: setEventsHandler,
+    theme,
+    changeTheme: setThemeHandler,
   };
   return <Ctx.Provider value={ctxValue}>{children}</Ctx.Provider>;
 };

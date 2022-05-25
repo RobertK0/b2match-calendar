@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext } from "react";
+import Ctx from "../store/ctxProvider";
 import styles from "../styles/HomeHeader.module.css";
 
 const monthString = [
@@ -19,6 +20,7 @@ const monthString = [
 
 const HomeHeader = () => {
   const router = useRouter();
+  const ctx = useContext(Ctx);
   const { month, year } = router.query;
   if (!month || !year) return null;
 
@@ -51,19 +53,54 @@ const HomeHeader = () => {
 
     router.push(`/${target?.targetYear}/${target?.targetMonth}`);
   };
+
+  const switchThemeHandler = () => {
+    ctx.changeTheme();
+  };
+
   return (
     <header className={styles.header}>
-      <span>{year}</span>
+      <span className={styles.year}>{year}</span>
       <div className={styles.container}>
         <button onClick={pageSwitchHandler.bind(null, false)}>
-          {"<"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
         </button>
 
         <h2>{monthString[+month - 1]}</h2>
         <button onClick={pageSwitchHandler.bind(null, true)}>
-          {">"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
         </button>
       </div>
+      <button
+        className={styles["btn-theme"]}
+        onClick={switchThemeHandler}
+      >
+        Change theme
+      </button>
     </header>
   );
 };

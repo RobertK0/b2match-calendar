@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
+  background-color: var(--secondary-bg);
+  transition: background-color 0.2s;
 }
 
 .header span {
@@ -15,7 +17,14 @@
   justify-self: center;
 }
 
+.year {
+  color: var(--text);
+  font-size: 20px;
+}
+
 .container button {
+  background-color: transparent;
+  color: var(--text);
   height: 48px;
   width: 48px;
   border: none;
@@ -25,7 +34,11 @@
 }
 
 .container button:hover {
-  background-color: #ccc;
+  background-color: #eee;
+}
+
+[data-theme="dark"] .container button:hover {
+  background-color: rgb(38, 87, 87);
 }
 
 .container h2 {
@@ -33,6 +46,21 @@
   width: 200px;
   text-align: center;
   text-transform: uppercase;
-  color: rgba(75, 75, 75, 0.658);
+  color: var(--text);
   font-weight: 500;
+}
+
+.btn-theme {
+  color: var(--text);
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn-theme:hover {
+  background-color: rgba(134, 134, 134, 0.158);
+  color: var(--accent);
 }

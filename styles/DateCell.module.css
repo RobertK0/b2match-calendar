@@ -1,12 +1,12 @@
 .cell {
   height: 100px;
-  background-color: white;
-  color: #777;
+  background-color: var(--background);
+  color: var(--text);
+  transition: all 0.3s;
 }
-
 .cell button {
   background-color: transparent;
-  color: #2fa9a9;
+  color: var(--accent);
   border: none;
   border-radius: 5px;
   width: 100%;
@@ -17,6 +17,10 @@
 }
 .cell button:hover {
   background-color: rgb(186, 219, 219);
+}
+
+[data-theme="dark"] .cell button:hover {
+  background-color: rgb(38, 87, 87);
 }
 
 .cell span {

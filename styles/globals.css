@@ -1,18 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
 
+:root {
+  --main-bg: #f7f7f7;
+  --secondary-bg: #ffffff;
+  --text: #4b4b4bb3;
+  --text-accented: #000000;
+  --accent-inverse: #eeeeee;
+  --accent: #2fa9a9;
+}
+
+[data-theme="dark"] {
+  --main-bg: #0f0f0f;
+  --secondary-bg: #1d1d1d;
+  --text: #b4b4b4b3;
+  --text-accented: #ffffff;
+  --accent-inverse: #111111;
+  --accent: #ffffff;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
 }
-body {
-  padding-top: 3%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 a {
   color: inherit;
   text-decoration: none;
