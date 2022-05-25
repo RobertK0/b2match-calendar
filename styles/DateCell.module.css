@@ -4,6 +4,11 @@
   color: var(--text);
   transition: all 0.3s;
 }
+
+.cell:first-of-type {
+  grid-column-start: attr(data-start integer, 3);
+}
+
 .cell button {
   background-color: transparent;
   color: var(--accent);

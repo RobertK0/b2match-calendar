@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import Ctx from "../../../../store/ctxProvider";
+import Head from "next/head";
 import styles from "../../../../styles/Details.module.css";
 
 const Details = () => {
@@ -32,19 +33,30 @@ const Details = () => {
   });
 
   return (
-    <div className={styles["theme-wrapper"]} data-theme={ctx.theme}>
-      <Link href={`/${router.query.year}/${router.query.month}`}>
-        <a className={styles["back-button"]}>back</a>
-      </Link>
-      <main className={styles.main}>
-        <div className={styles.card}>
-          <span className={styles.title}>{`${
-            events.length
-          } total commit${events.length > 1 ? "s" : ""}: `}</span>
-          {markup}
-        </div>
-      </main>
-    </div>
+    <>
+      <Head>
+        <title>
+          Calendar | {router.query.day}/{router.query.month}/
+          {router.query.year}
+        </title>
+      </Head>
+      <div
+        className={styles["theme-wrapper"]}
+        data-theme={ctx.theme}
+      >
+        <Link href={`/${router.query.year}/${router.query.month}`}>
+          <a className={styles["back-button"]}>back</a>
+        </Link>
+        <main className={styles.main}>
+          <div className={styles.card}>
+            <span className={styles.title}>{`${
+              events.length
+            } total commit${events.length > 1 ? "s" : ""}: `}</span>
+            {markup}
+          </div>
+        </main>
+      </div>
+    </>
   );
 };
 

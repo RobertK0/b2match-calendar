@@ -1,0 +1,32 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  background-color: var(--secondary-bg);
+  transition: background-color 0.2s;
+}
+
+.header span {
+  align-self: center;
+  margin-left: 64px;
+}
+
+.year {
+  color: var(--text);
+  font-size: 20px;
+}
+
+.btn-theme {
+  color: var(--text);
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn-theme:hover {
+  background-color: rgba(134, 134, 134, 0.158);
+  color: var(--accent);
+}

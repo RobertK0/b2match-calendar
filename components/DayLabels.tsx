@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../styles/CalendarHeader.module.css";
+import styles from "../styles/DayLabels.module.css";
 
-const CalendarHeader = () => {
+const DayLabels = () => {
   return (
     <>
       <strong className={styles.day}>Monday</strong>
@@ -15,4 +15,4 @@ const CalendarHeader = () => {
   );
 };
 
-export default CalendarHeader;
+export default DayLabels;
