@@ -2,6 +2,7 @@
   position: absolute;
   inset: 0;
   bottom: unset;
+  min-height: 100vh;
   background-color: var(--main-bg);
   transition: all 0.3s;
 }
