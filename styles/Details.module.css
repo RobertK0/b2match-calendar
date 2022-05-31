@@ -1,15 +1,15 @@
 .theme-wrapper {
   position: absolute;
   inset: 0;
+  min-height: 100vh;
+  bottom: unset;
   background-color: var(--main-bg);
 }
 
 .main {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
+  position: relative;
+  margin: 300px auto 0;
+  width: 900px;
   height: auto;
   padding: 32px 64px;
   border-radius: 10px;
@@ -38,6 +38,9 @@
 
 .wrapper span {
   color: var(--text-accented);
+}
+.wrapper span:not(:last-child)::after {
+  content: "\00a0|\00a0";
 }
 
 .wrapper span:not(:last-child) {
@@ -84,4 +87,27 @@
 
 .back-button:hover::before {
   transform: scale(1.5, 1.8);
+}
+
+@media screen and (max-width: 1000px) {
+  .main {
+    width: 80%;
+  }
+  .back-button {
+    left: 10%;
+  }
+  .wrapper {
+    white-space: break-spaces;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .back-button {
+    top: 5%;
+  }
+  .main {
+    padding: 32px 32px;
+    margin-top: 150px;
+    margin-bottom: 128px;
+  }
 }

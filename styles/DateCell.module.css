@@ -39,6 +39,9 @@
     grid-column-start: unset !important;
     border-bottom: 1px solid rgb(150, 150, 150);
   }
+  .cell:last-child {
+    border-bottom: unset;
+  }
   [data-theme="dark"] .cell span {
     color: #bbb;
   }

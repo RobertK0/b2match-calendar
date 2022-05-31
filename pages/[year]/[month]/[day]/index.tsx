@@ -33,9 +33,9 @@ const Details = () => {
   const markup = events.map((event, index) => {
     return (
       <div key={index} className={styles.wrapper}>
-        <span>{event.date.toLocaleTimeString()}&nbsp;| </span>
-        <span>&nbsp; {event.author} &nbsp;</span>
-        <span> |&nbsp;{event.message}</span>
+        <span>{event.date.toLocaleTimeString()}</span>
+        <span>{event.author}</span>
+        <span>{event.message}</span>
       </div>
     );
   });
