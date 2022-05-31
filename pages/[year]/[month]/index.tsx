@@ -30,7 +30,7 @@ const CalendarPage = () => {
   let dates = getDates(+year, +month - 1);
 
   const markup = dates.map((date, index) => (
-    <DateCell dates={dates} key={index}>
+    <DateCell dates={dates} key={index} day={date.getDay()}>
       {date.getDate()}
     </DateCell>
   ));

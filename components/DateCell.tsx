@@ -7,13 +7,25 @@ import DetailsButton from "./DetailsButton";
 type PropType = {
   children: number;
   dates: Date[];
+  day: number;
 };
 
-const DateCell: React.FC<PropType> = ({ children, dates }) => {
+const dayString = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
+const DateCell: React.FC<PropType> = ({ children, dates, day }) => {
   const ctx = useContext(Ctx);
   const router = useRouter();
 
-  const startingDay = dates[0].getDay();
+  const startingDay =
+    dates[0].getDay() === 0 ? 7 : dates[0].getDay();
 
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
@@ -35,12 +47,12 @@ const DateCell: React.FC<PropType> = ({ children, dates }) => {
   );
 
   //Converts from Sun-Sat to Mon-Sun
-  const convertedDay = startingDay === 0 ? 7 : startingDay;
+  const convertedDay = day === 0 ? 7 : day;
 
   //Got to do inline style for this since data attribute for properties
   //other than pseudo-element content is experimental
   const style =
-    children === 1 ? { gridColumnStart: convertedDay } : {};
+    children === 1 ? { gridColumnStart: startingDay } : {};
 
   const showDetailsHandler = () => {
     router.push(`${router.asPath}/${children}`);
@@ -48,7 +60,9 @@ const DateCell: React.FC<PropType> = ({ children, dates }) => {
 
   return (
     <div className={`${styles.cell}`} style={style}>
-      <span>{children}</span>
+      <span data-day={` | ${dayString[convertedDay - 1]}`}>
+        {children}
+      </span>
       <DetailsButton onClick={showDetailsHandler}>
         {events}
       </DetailsButton>

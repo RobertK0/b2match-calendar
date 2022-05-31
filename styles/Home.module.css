@@ -1,6 +1,7 @@
 .theme-wrapper {
   position: absolute;
   inset: 0;
+  bottom: unset;
   background-color: var(--main-bg);
   transition: all 0.3s;
 }
@@ -15,7 +16,7 @@
   box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
-  width: 50%;
+  width: 900px;
 }
 
 .main > * {
@@ -37,4 +38,27 @@
 
 .grid-container > span {
   height: 100px;
+}
+
+@media screen and (max-width: 1000px) {
+  .main {
+    width: 700px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    width: 450px;
+    margin-top: 32px;
+    margin-bottom: 64px;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .main {
+    width: 90%;
+  }
 }

@@ -7,8 +7,9 @@ Live site [here](https://b2match-calendar.vercel.app/)
 - Commit history fetching from GH API
 - Rendering commits by date
 - Detailed events on clicking them
+- Year selection dropdown
+- Responsive design
 
 ### Todo
 
-- Year selection dropdown
-- Clean up a bit
+- ~~Clean up a bit¸~~ done
