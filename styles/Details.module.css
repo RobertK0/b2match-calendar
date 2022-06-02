@@ -10,6 +10,7 @@
   position: relative;
   margin: 300px auto 0;
   width: 900px;
+  min-width: fit-content;
   height: auto;
   padding: 32px 64px;
   border-radius: 10px;
